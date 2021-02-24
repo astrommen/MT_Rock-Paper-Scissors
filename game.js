@@ -1,8 +1,21 @@
 function playGame() {
   console.log("welcome!")
-  prompt("How many rounds to play?")
+  
+  let rounds = prompt("How many rounds to play?");
+
+  let regex = /^[0-9]*$/;
+  let checkRounds = regex.exec(rounds); //checks if user input is numbers
+
+  // Begin Condition
+  if (typeof(rounds)=="string" && checkRounds){
+    console.log(rounds);
+  } else if (!checkRounds){
+    alert("Please enter a number")
+    playGame();
+  }
 }
 
+// playGame()
 // To do
 // begin condition
 //  take user input for rounds
