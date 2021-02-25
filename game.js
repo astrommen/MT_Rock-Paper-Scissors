@@ -28,8 +28,6 @@ function playGame() {
       let checkChoice = regexUser.exec(userChoice);
 
       if (checkChoice) {
-        console.log(computerChoice);
-
         switch(computerChoice) {
           case 0:
             cpu = "rock";
@@ -66,8 +64,8 @@ function playGame() {
 
         }
 
-        console.log("player chose", userChoice, "and cpu chose", cpu)
-        console.log(tie, userScore, cpuScore)
+        console.log("player chose", userChoice, "and cpu chose", cpu);
+        console.log("score: player-", userScore, "cpu-", cpuScore, "ties-", tie);
 
       }
 
