@@ -2,13 +2,73 @@ function playGame() {
   console.log("welcome!")
   
   let rounds = prompt("How many rounds to play?");
-
+ 
   let regex = /^[0-9]*$/;
   let checkRounds = regex.exec(rounds); //checks if user input is numbers
 
   // Begin Condition
   if (typeof(rounds)=="string" && checkRounds){
-    console.log(rounds);
+
+    let cpu;
+
+    let userScore = 0;
+    let cpuScore = 0;
+    let tie = 0;
+
+    // Playing Condition
+    for (let i = 0; i < rounds; i++){
+      
+      // generate computer selection where 0 = rock, 1 = paper, 2 = scissors
+      let computerChoice = Math.floor(Math.random() * 3);
+      let userChoice = prompt("Type rock, paper, or scissor");
+
+      let regexUser = /^[a-zA-Z]+$/;
+      let checkChoice = regexUser.exec(userChoice);
+
+      if (checkChoice) {
+        console.log(computerChoice);
+
+        switch(computerChoice) {
+          case 0:
+            cpu = "rock";
+            if (userChoice === "rock") {
+              tie++;
+            } else if (userChoice === "paper") {
+              userScore++;
+            } else if (userChoice === "scissor") {
+              cpuScore++;
+            }
+            break;
+            
+          case 1:
+            cpu = "paper";
+            if (userChoice === "paper") {
+              tie++;
+            } else if (userChoice === "scissors") {
+              userScore++;
+            } else {
+              cpuScore++;
+            }
+            break;
+
+          case 2:
+            cpu = "scissors";
+            if (userChoice === "scissors") {
+              tie++;
+            } else if (userChoice === "rock") {
+              userScore++;
+            } else {
+              cpuScore++;
+            }
+            break;
+
+        }
+
+        console.log(tie, userScore, cpuScore)
+
+      }
+
+    }
   } else if (!checkRounds){
     alert("Please enter a number")
     playGame();
