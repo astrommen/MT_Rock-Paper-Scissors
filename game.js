@@ -66,6 +66,7 @@ function playGame() {
 
         }
 
+        console.log("player chose", userChoice, "and cpu chose", cpu)
         console.log(tie, userScore, cpuScore)
 
       }
