@@ -24,7 +24,9 @@ function playGame() {
       let computerChoice = Math.floor(Math.random() * 3);
       let userChoice = prompt("Type rock, paper, or scissor");
 
-      let regexUser = /^[a-zA-Z]+$/;
+      // let regexUser = /^[a-zA-Z]+$/;
+      // new regexUser looks for whole words: https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch05s02.html
+      let regexUser = /\b(?:rock|paper|scissors)\b/gi;
       let checkChoice = regexUser.exec(userChoice);
 
       if (checkChoice) {
@@ -35,7 +37,7 @@ function playGame() {
               tie++;
             } else if (userChoice === "paper") {
               userScore++;
-            } else if (userChoice === "scissor") {
+            } else {
               cpuScore++;
             }
             break;
@@ -67,11 +69,17 @@ function playGame() {
         console.log("player chose", userChoice, "and cpu chose", cpu);
         console.log("score: player-", userScore, "cpu-", cpuScore, "ties-", tie);
 
+      } else {
+        alert("Invalid selection");
+        console.clear();
+        playGame();
       }
 
     }
-  } else if (!checkRounds){
-    alert("Please enter a number")
+  // } else if (!checkRounds){
+  } else {
+    alert("Please enter a number");
+    console.clear();
     playGame();
   }
 }
