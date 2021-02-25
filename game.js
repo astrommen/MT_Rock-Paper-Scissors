@@ -18,6 +18,8 @@ function playGame() {
     // Playing Condition
     for (let i = 0; i < rounds; i++){
       
+      console.log("round:", i+1);
+
       // generate computer selection where 0 = rock, 1 = paper, 2 = scissors
       let computerChoice = Math.floor(Math.random() * 3);
       let userChoice = prompt("Type rock, paper, or scissor");
